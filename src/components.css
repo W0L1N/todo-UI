@@ -1,0 +1,153 @@
+/* Navigation bar */
+
+.navibar{
+    height: 100%;
+    width:240px;
+    padding: 5px;
+    /* Flexbox */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #212A3E;
+}
+.navibar ul{
+    list-style: none;
+    width: 100%;
+    padding: 0px;
+    margin: 0px 0px 20px 0px;
+}
+.navibar p {
+    align-self: center;
+    font-size: xx-large;
+    color: #F1F6F9;
+}
+.navibar #logo{
+    font-family: 'Lobster';
+    color: white;
+    width: 100%;
+    text-align: center;
+    background-color: #394867;
+    border-radius: 10px 100px / 120px;
+    border: 2px solid black;
+    font-style: italic;
+}
+.navibar li{
+    width: 100%;
+    padding: 5px;
+    margin: 0px;
+    text-align: center;
+    color: #F1F6F9;
+}
+.navibar li a{
+    display: block;
+    background-color: #394867;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.navibar li a:hover{
+    cursor: pointer;
+    background-color: #F1F6F9;
+    color: #394867;
+}
+.active{
+    background-color: #9BA4B5;
+}
+
+/* Todo cards */
+
+.todo_card{
+    margin: 10px;
+    background-color: #394867;
+    display: grid;
+    grid-template-columns: 370px 50px;
+    grid-template-rows: 34px 34px;
+    gap: 0px 0px;
+    grid-template-areas:
+        "todo_name todo_status"
+        "todo_desc todo_status";
+    color:#F1F6F9;
+    border: 2px solid #212A3E;
+    border-radius: 16px;
+}
+.todo_status {
+    grid-area: todo_status;
+    align-self: center;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #212A3E;
+    border-radius: 20px;
+}
+
+.todo_name {
+    grid-area: todo_name;
+    margin: 5px 10px 5px 10px;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-weight: bold;
+}
+
+.todo_desc {
+    grid-area: todo_desc;
+    margin: 5px 20px 5px 20px;
+    text-overflow: ellipsis;
+}
+
+.todo_table_body{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.todo_containter{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.in_progress {
+    background-color: #DBDFEA;
+    width: 24px;
+    height: 24px;
+}
+.done{
+    background-color: #FFEAD2;
+    width: 24px;
+    height: 24px;
+}
+.todo{
+    background-color: #8294C4;
+    width: 24px;
+    height: 24px;
+}
+
+.todo_title h2{
+    text-align: center;
+    margin-top: 20px;
+}
+.todo_title{
+    width: 420px;
+    height: 68px;
+    margin: 10px;
+}
+.add_card{
+    background-color: #394867;
+    color: #F1F6F9;
+    border: 2px solid #212A3E;
+    border-radius: 16px; 
+}
+.add_card h2{
+    display: block;
+    align-self: center;
+    margin-top: 10px;
+}
+.add_card:hover{
+    cursor: pointer;
+    background-color: #F1F6F9;
+    color: #394867;
+}
+/* */
