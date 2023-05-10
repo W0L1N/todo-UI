@@ -57,7 +57,7 @@
 
 /* Todo cards */
 
-.todo_card{
+.task_card{
     margin: 10px;
     background-color: #394867;
     display: grid;
@@ -71,7 +71,7 @@
     border: 2px solid #212A3E;
     border-radius: 16px;
 }
-.todo_status {
+.task_status {
     grid-area: todo_status;
     align-self: center;
     width: 24px;
@@ -80,7 +80,7 @@
     border-radius: 20px;
 }
 
-.todo_name {
+.task_name {
     grid-area: todo_name;
     margin: 5px 10px 5px 10px;
     text-overflow: ellipsis;
@@ -88,20 +88,20 @@
     font-weight: bold;
 }
 
-.todo_desc {
+.task_desc {
     grid-area: todo_desc;
     margin: 5px 20px 5px 20px;
     text-overflow: ellipsis;
 }
 
-.todo_table_body{
+.task_table_body{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
 }
-.todo_containter{
+.task_containter{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -125,27 +125,27 @@
     height: 24px;
 }
 
-.todo_title h2{
+.task_title h2{
     text-align: center;
     margin-top: 20px;
 }
-.todo_title{
+.task_title{
     width: 420px;
     height: 68px;
     margin: 10px;
 }
-.add_card{
+.add_task{
     background-color: #394867;
     color: #F1F6F9;
     border: 2px solid #212A3E;
     border-radius: 16px; 
 }
-.add_card h2{
+.add_task h2{
     display: block;
     align-self: center;
     margin-top: 10px;
 }
-.add_card:hover{
+.add_task:hover{
     cursor: pointer;
     background-color: #F1F6F9;
     color: #394867;

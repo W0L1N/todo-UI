@@ -33,7 +33,7 @@ function App() {
 function Navbar() {
     return (
         <div className="navibar">
-            <p id="logo">todo</p>
+            <p id="logo">Todo</p>
             <ul>
                 <li><a>Jakaś opcja tu będzie</a></li>
                 <li><a>Jakaś opcja tu będzie</a></li>
@@ -45,32 +45,31 @@ function Navbar() {
     )
 }
   
-function Todo(prop) {
+function Task(prop) {
     return (
-      <div className={"todo_card"}>
-        <div className="todo_name">{prop.name}</div>
-        <div className={'todo_status '+prop.status} title={prop.status}></div>
-        <div className="todo_desc">{prop.desc}</div>
+      <div className={"task_card"}>
+        <div className="task_name">{prop.name}</div>
+        <div className={'task_status '+prop.status} title={prop.status}></div>
+        <div className="task_desc">{prop.desc}</div>
         </div>
     )
 }
 
-function Todo_list(prop) {
-    const todo_table = Object.values({ ...todo_data })
+function Task_list(prop) {
   return (
-    <div className="todo_table_body">
-       <div className='todo_title'><h2>{todo_table[prop.index].project_name}</h2></div>
-            {(todo_table[prop.index].todo_list).map((todo) =>
-                <Todo
-                    key={todo.id}
-                    name={todo.name}
-                    desc={todo.desc}
-                    status={todo.status}
+    <div className="task_table_body">
+       <div className='task_title'><h2>{todo_data[prop.index].project_name}</h2></div>
+            {(todo_data[prop.index].task_list).map((task) =>
+                <Task
+                    key={task.id}
+                    name={task.title}
+                    desc={task.desc}
+                    status={task.status}
                 />
             )
         }
-        <div className="todo_title add_card">
-          <h2>Dodaj nowy todo</h2>
+        <div className="task_title add_task">
+          <h2>Dodaj nowy task</h2>
         </div>
         
         </div>
@@ -80,7 +79,7 @@ function Todo_list(prop) {
   return (
     <div className="App">
       <Navbar />
-      <Todo_list
+      <Task_list
       index = {activeProjectId}
       />
     </div>
