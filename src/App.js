@@ -6,6 +6,14 @@ import "./components.css"
 function App() {
 
   const [activeProjectId, setActiveProjectId] = useState(0)
+  const [addTaskForm, setAddTaskForm] = useState(
+    {
+                id: null,
+                title: null,
+                desc: null,
+                status: null
+            }
+  )
 
   function ProjectList() {
 
@@ -55,10 +63,56 @@ function Task(prop) {
     )
 }
 
-function Task_list(prop) {
+  function handleTaskForm() {
+      const oldDisplay = document.getElementById("overlay").style.display
+      const newDisplay = (oldDisplay == "none" ? "flex" : "none")
+      document.getElementById("overlay").style.display = newDisplay
+  }
+  
+  function PopUpForm(prop) {
+
+    function handlePopUpFormChange(event) {
+      console.log("Początek wykonania kodu")
+      console.log()
+      let formName = event.target.id;
+      let formValue = event.target.value;
+
+        const newTask = { ...addTaskForm };
+        newTask[formName] = formValue;
+
+      setAddTaskForm(newTask)
+      console.log("Koniec wykonania kodu")
+    }
+
+    return (
+      <div id="pop-up">
+        <form>
+          <h2>{prop.title}</h2>
+          <input type='text' id='title' placeholder='Task title...' onChange={handlePopUpFormChange}></input>
+          <input type='text' id='desc' placeholder='Task description...' onChange={handlePopUpFormChange}></input>
+          <select id="status" onChange={handlePopUpFormChange}>
+            <option value="todo">To do</option>
+            <option value="in_progress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+          <button type="reset" /*onClick={handleTaskForm}*/>{prop.button}</button>
+          <button type="reset" /*onClick={handleTaskForm}*/>Anuluj</button>
+        </form>
+      </div>
+    )
+  }
+  
+  function Task_list(prop) {
+  
   return (
     <div className="task_table_body">
-       <div className='task_title'><h2>{todo_data[prop.index].project_name}</h2></div>
+      <div id="overlay">
+        <PopUpForm
+          title="Dodaj nowy task"
+          button="Dodaj"
+        />
+      </div>
+      <div className='task_title'><h2>{todo_data[prop.index].project_name}</h2></div>
             {(todo_data[prop.index].task_list).map((task) =>
                 <Task
                     key={task.id}
@@ -68,7 +122,7 @@ function Task_list(prop) {
                 />
             )
         }
-        <div className="task_title add_task">
+        <div className="task_title add_task" onClick={handleTaskForm}>
           <h2>Dodaj nowy task</h2>
         </div>
         
