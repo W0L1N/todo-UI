@@ -89,6 +89,10 @@ function App() {
       event.preventDefault();
 
       console.log(addTaskForm)
+
+      const newTask = { ...addTaskForm }
+      todo_data[activeProjectId].task_list.push(newTask)
+
       addTaskForm.id = nanoid()
       handleTaskForm();
     }
