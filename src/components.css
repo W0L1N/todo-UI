@@ -166,7 +166,14 @@
 #pop-up {
     background-color: white;
     border: 2px solid black;
-    display: block;
+    display: none;
+    width: 350px;
+    z-index: 1001;
+}
+#pop-up-project {
+    background-color: white;
+    border: 2px solid black;
+    display: none;
     width: 350px;
     z-index: 1001;
 }

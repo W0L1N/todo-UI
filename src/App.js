@@ -26,7 +26,7 @@ function App() {
             return <li key={project.project_id}><a id={project.project_id} onClick={handleProjectChange}>{project.project_name}</a></li>
           })
         }
-        <li><a>+ Dodaj nowy projekt</a></li>
+        <li id="add_project" onClick={handleProjectForm}><a>+ Dodaj nowy projekt</a></li>
       </ul>
     )
   }
@@ -60,15 +60,22 @@ function App() {
     const oldDisplay = document.getElementById("overlay").style.display
     const newDisplay = (oldDisplay == "none" ? "flex" : "none")
     document.getElementById("overlay").style.display = newDisplay
+    document.getElementById("pop-up").style.display = newDisplay
   }
+  function handleProjectForm() {
+    const oldDisplay = document.getElementById("overlay").style.display
+    const newDisplay = (oldDisplay == "none" ? "flex" : "none")
+    document.getElementById("overlay").style.display = newDisplay
+    document.getElementById("pop-up-project").style.display = newDisplay
+    }
   
   function PopUpForm(prop) {
 
     const [addTaskForm, setAddTaskForm] = useState(
     {
       id: nanoid(),
-      title: null,
-      desc: null,
+      title: "Task"+(todo_data[activeProjectId].task_list.length+1),
+      desc: "",
       status: "todo"
     }
   )
@@ -82,7 +89,6 @@ function App() {
       newTask[formName] = formValue;
 
       setAddTaskForm(newTask)
-      console.log(addTaskForm)
     }
 
     const handleSubmit = (event) => {
@@ -115,7 +121,60 @@ function App() {
       </div>
     )
   }
-  
+  function AddProject(prop) {
+    const [addProjectForm, setProjectForm] = useState(
+    {
+      id: nanoid(),
+      project_name: "Project"+(todo_data.length+1),
+      project_desc: "",
+      task_list: [
+          
+      ]
+    }
+  )
+
+    function handlePopUpFormChange(event) {
+
+      let formName = event.target.id;
+      let formValue = event.target.value;
+
+      const newProject = { ...addProjectForm };
+      newProject[formName] = formValue;
+
+      setProjectForm(newProject)
+    }
+
+    function handleProjectForm() {
+    const oldDisplay = document.getElementById("overlay").style.display
+    const newDisplay = (oldDisplay == "none" ? "flex" : "none")
+    document.getElementById("overlay").style.display = newDisplay
+    document.getElementById("pop-up-project").style.display = newDisplay
+    }
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+
+      const newProject = { ...addProjectForm }
+      todo_data.push(newProject)
+        console.log(todo_data)
+        
+      newProject.id = nanoid()
+      handleProjectForm();
+    }
+
+    
+    return (
+        <div id="pop-up-project">
+        <form>
+          <h2>{prop.title}</h2>
+          <input type='text' id='project_title' placeholder='Project title...' onChange={handlePopUpFormChange}></input>
+          <input type='text' id='project_desc' placeholder='Project description...' onChange={handlePopUpFormChange}></input>
+          <button type="reset" onClick={handleSubmit}>{prop.button}</button>
+          <button type="reset" onClick={handleProjectForm}>Anuluj</button>
+        </form>
+      </div>
+    )
+}
   function Task_list(prop) {
   
     return (
@@ -148,6 +207,10 @@ function App() {
         <PopUpForm
           title="Dodaj nowy task"
           button="Dodaj"
+        />
+        <AddProject
+          title="Dodaj nowy projekt"
+          button="Dodaj"        
         />
       </div>
     </div>

@@ -2,7 +2,7 @@ var todo_data = [
     {
         project_id: 1,
         project_name: "Project1",
-        desc: "project description",
+        project_desc: "project description",
         task_list: [
             {
                 id: 1,
@@ -16,7 +16,7 @@ var todo_data = [
     {
         project_id: 2,
         project_name: "Project2",
-        desc: "project description",
+        project_desc: "project description",
         task_list: [
             {
                 id: 1,
@@ -35,7 +35,7 @@ var todo_data = [
     {
         project_id: 3,
         project_name: "Project3",
-        desc: "project description",
+        project_desc: "project description",
         task_list: [
             {
                 id: 1,
