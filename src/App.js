@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import todo_data from './test';
 import "./components.css"
 import {nanoid} from 'nanoid'
@@ -7,6 +7,17 @@ import {nanoid} from 'nanoid'
 function App() {
 
   const [activeProjectId, setActiveProjectId] = useState(0)
+   const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+    async function getTasks() {
+      const response = await fetch('http://localhost:8080/task/all');
+      const data = await response.json();
+      setTasks(data);
+    }
+      getTasks();
+      console.log(tasks)
+  }, []);
 
   function ProjectList() {
 
@@ -17,13 +28,6 @@ function App() {
         )
       }))
       setActiveProjectId(newActProject)
-    
-      async function getTask() {
-        const response = await fetch("http://localhost:8080/task/all")
-        var data = await response.json()
-        return data;
-      }
-      console.log(getTask())
     }
 
     return (
