@@ -17,6 +17,13 @@ function App() {
         )
       }))
       setActiveProjectId(newActProject)
+    
+      async function getTask() {
+        const response = await fetch("http://localhost:8080/task/all")
+        var data = await response.json()
+        return data;
+      }
+      console.log(getTask())
     }
 
     return (
@@ -62,6 +69,7 @@ function App() {
     document.getElementById("overlay").style.display = newDisplay
     document.getElementById("pop-up").style.display = newDisplay
   }
+
   function handleProjectForm() {
     const oldDisplay = document.getElementById("overlay").style.display
     const newDisplay = (oldDisplay == "none" ? "flex" : "none")
@@ -121,6 +129,7 @@ function App() {
       </div>
     )
   }
+
   function AddProject(prop) {
     const [addProjectForm, setProjectForm] = useState(
     {
@@ -174,7 +183,8 @@ function App() {
         </form>
       </div>
     )
-}
+  }
+  
   function Task_list(prop) {
   
     return (
